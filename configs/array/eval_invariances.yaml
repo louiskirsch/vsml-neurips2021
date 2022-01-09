@@ -1,0 +1,36 @@
+grid:
+  - - config:
+        call: evaluate
+        evaluation:
+          episode_length: 2000
+          count: 32
+          datasets:
+            - mnist
+            - fashion_mnist
+        checkpoint:
+          restore:
+            # TODO insert wandb_path here, train via configs/invariances.yaml
+            run_path: 'entity/project/id'
+      tags: [evaluate, invariances]
+  - - config:
+        data:
+          filter_classes: [5, 8, 1, 4, 2]
+    - config:
+        data:
+          filter_classes: null
+    - config:
+        data:
+          preprocess:
+            resize: [48, 48]
+    - config:
+        data:
+          preprocess:
+            resize: [21, 21]
+    - config:
+        data:
+          preprocess:
+            rand_proj: True
+    - config:
+        data:
+          preprocess:
+            shuffle: True

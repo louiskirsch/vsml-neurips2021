@@ -1,0 +1,5 @@
+model:
+  type: HebbianFW
+  hebbian_fw:
+    use_oja: True
+    tanh_bound: 100

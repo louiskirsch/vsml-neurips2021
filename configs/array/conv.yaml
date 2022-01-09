@@ -1,0 +1,41 @@
+grid:
+  - - config:
+        model:
+          vsml_rnn:
+            backward_pass: True
+            layerwise_rnns: False
+            feed_label: True
+          sub_rnn:
+            layer_norm: True
+      tags:
+        - conv
+  - - config:
+        model:
+          vsml_rnn:
+            layer_specs:
+              - type: conv
+                kernel_size: 3
+                stride: 2
+                out_channels: 8
+              - type: dense
+      tags:
+        - 1-conv
+    - config:
+        model:
+          vsml_rnn:
+            layer_specs:
+              - type: conv
+                kernel_size: 3
+                stride: 2
+                out_channels: 8
+              - type: conv
+                kernel_size: 3
+                stride: 2
+                out_channels: 8
+              - type: conv
+                kernel_size: 3
+                stride: 2
+                out_channels: 8
+              - type: dense
+      tags:
+        - 3-conv

@@ -1,0 +1,10 @@
+evaluation:
+  datasets:
+    - mnist
+    - fashion_mnist
+data:
+  preprocess:
+    rand_proj:
+      mpi_split:
+        - False
+        - True

@@ -1,0 +1,102 @@
+grid:
+  - - tags:
+        - datasets
+        - mnist-family
+      config:
+        training:
+          population_size: 1024
+        evaluation:
+          datasets:
+            - mnist
+            - fashion_mnist
+            - random
+            - emnist
+            - kmnist
+            - sum
+        data:
+          preprocess:
+            rand_proj:
+              mpi_split:
+                - False
+                - True
+  - - config:
+        training:
+          dataset: mnist
+      tags: [mnist]
+    - config:
+        training:
+          dataset: fashion_mnist
+      tags: [fashion_mnist]
+    - config:
+        training:
+          dataset: random
+      tags: [random]
+    - config:
+        training:
+          dataset: emnist
+      tags: [emnist]
+    - config:
+        training:
+          dataset: kmnist
+      tags: [kmnist]
+    - config:
+        training:
+          dataset:
+            mpi_repeat: 2
+            mpi_split:
+              - mnist
+              - fashion_mnist
+              - random
+              - emnist
+              - kmnist
+      tags: [all]
+    - config:
+        training:
+          dataset:
+            mpi_repeat: 2
+            mpi_split:
+              - fashion_mnist
+              - random
+              - emnist
+              - kmnist
+      tags: [no-mnist]
+    - config:
+        training:
+          dataset:
+            mpi_repeat: 2
+            mpi_split:
+              - mnist
+              - random
+              - emnist
+              - kmnist
+      tags: [no-fashion-mnist]
+    - config:
+        training:
+          dataset:
+            mpi_repeat: 2
+            mpi_split:
+              - mnist
+              - fashion_mnist
+              - emnist
+              - kmnist
+      tags: [no-random]
+    - config:
+        training:
+          dataset:
+            mpi_repeat: 2
+            mpi_split:
+              - mnist
+              - fashion_mnist
+              - random
+              - kmnist
+      tags: [no-emnist]
+    - config:
+        training:
+          dataset:
+            mpi_repeat: 2
+            mpi_split:
+              - mnist
+              - fashion_mnist
+              - random
+              - emnist
+      tags: [no-kmnist]

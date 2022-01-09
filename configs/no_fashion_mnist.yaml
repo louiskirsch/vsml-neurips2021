@@ -1,0 +1,23 @@
+training:
+  population_size: 1024
+  dataset:
+    mpi_repeat: 2
+    mpi_split:
+      - mnist
+      - random
+      - emnist
+      - kmnist
+evaluation:
+  datasets:
+    - mnist
+    - fashion_mnist
+    - random
+    - emnist
+    - kmnist
+    - sum
+data:
+  preprocess:
+    rand_proj:
+      mpi_split:
+        - False
+        - True

@@ -1,0 +1,7 @@
+training:
+  population_size: 2
+  iterations: 1
+  episode_length: 6
+
+evaluation:
+  episode_length: 6

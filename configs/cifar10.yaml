@@ -1,0 +1,8 @@
+training:
+  dataset: cifar10
+
+evaluation:
+  datasets:
+    - mnist
+    - fashion_mnist
+    - cifar10

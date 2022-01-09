@@ -1,0 +1,121 @@
+seed: 42
+call: train
+
+summary:
+  frequency: 100
+
+checkpoint:
+  frequency: 500
+  with_step: False
+  restore:
+    run_path: null
+    file_name: model.chkp
+
+training:
+  iterations: 10001
+  dataset: mnist
+  batch_size: 1
+  episode_length: 500
+  population_size: 1024
+  loss_type: mean
+
+evaluation:
+  datasets:
+    - mnist
+    - fashion_mnist
+  batch_size: 1
+  episode_length: 2000
+  frequency: 100
+  seed: 22
+  subset: test
+  count: 1
+
+data:
+  shuffle_buffer_size: 10000
+  filter_classes: null
+  preprocess:
+    normalization_mode: dataset_standard
+    dataset_stats:
+      cifar10: {mean: 0.4733630120754242, std: 0.2515689432621002}
+      fashion_mnist: {mean: 0.13066047430038452, std: 0.3081078827381134}
+      mnist: {mean: 0.13066047430038452, std: 0.3081078827381134}
+      svhn_cropped: {mean: 0.4514186382293701, std: 0.19929124414920807}
+      random: {mean: 0.0, std: 1.0}
+      sum: {mean: 0.0, std: 1.0}
+      emnist: {mean: 0.1739204376935959, std: 0.3319065570831299}
+      kmnist: {mean: 0.19176216423511505, std: 0.34834328293800354}
+      omniglot: {mean: 0.9220603108406067, std: 0.26807650923728943}
+      omniglot_fewshot: {mean: 0.9220603108406067, std: 0.26807650923728943}
+    pad:
+      input: null
+      output: null
+    resize: null
+    rand_proj: False
+    shuffle: False
+
+optimizer:
+  type: es
+  noise_std: 0.05
+  lr: 0.025
+  kwargs:
+    b1: 0.9
+    b2: 0.999
+  clip_gradnorm: 0
+
+model:
+  type: 'VSMLRNN'
+  sub_rnn:
+    msg_size: 8
+    slow_size: 16
+    init_rand_proportion: 0.5
+    layer_norm: False
+  vsml_rnn:
+    layer_specs:
+      - type: dense
+    num_micro_ticks: 2
+    tanh_bound: 100
+    output_idx: 1
+    backward_pass: False
+    separate_backward_rnn: False
+    feed_label: False
+    layerwise_rnns: False
+  meta_rnn:
+    slow_size: 128
+    num_micro_ticks: 2
+    tanh_bound: 100
+    use_conv: False
+  hebbian_fw:
+    use_oja: False
+    use_conv: False
+    tanh_bound: 100
+  sgd:
+    num_layers: 1
+    hidden_size: 160
+    tanh_bound: 100
+    optimizer: 'sgd'
+    lr: 0.01
+    use_conv: False
+  fwp:
+    fast_size: 64
+    tanh_bound: 100
+  fw_memory:
+    slow_size: 32
+    memory_size: 16
+    tanh_bound: 100
+    use_conv: False
+
+  
+# Datasets
+random_dataset:
+  size: 20
+  target_count: 10
+  img_size: [28, 28, 1]
+
+omniglot_fewshot_dataset:
+  num_classes: 5
+  resize: null
+  rotate: False
+  test_last: False
+
+sum_dataset:
+  input_size: [28, 28, 1]

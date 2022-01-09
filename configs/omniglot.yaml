@@ -1,0 +1,31 @@
+evaluation:
+  datasets:
+    - omniglot_fewshot
+  subset: test
+  episode_length: 6
+  count: 100
+
+training:
+  iterations: 100001
+  episode_length: 6
+  dataset: omniglot_fewshot
+  batch_size: 1
+  loss_type: last
+
+model:
+  hebbian_fw:
+    use_conv: True
+  fw_memory:
+    use_conv: True
+  meta_rnn:
+    use_conv: True
+  vsml_rnn:
+    backward_pass: True
+    layerwise_rnns: False
+    feed_label: True
+
+omniglot_fewshot_dataset:
+  num_classes: 5
+  resize: [28, 28]
+  rotate: False
+  test_last: True

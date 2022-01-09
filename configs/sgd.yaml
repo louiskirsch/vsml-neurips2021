@@ -1,0 +1,28 @@
+model:
+  type: SGD
+  sgd:
+    num_layers: 1
+    hidden_size: 160
+    tanh_bound: 100
+    optimizer: 'adam'
+    lr: 0.001
+    use_conv: False
+
+call: evaluate
+
+evaluation:
+  episode_length: 16000
+  count: 32
+  batch_size: 1
+  datasets:
+    - mnist
+    - fashion_mnist
+    - random
+    - emnist
+    - kmnist
+    - sum
+    - cifar10
+
+checkpoint:
+  restore:
+    run_path: null

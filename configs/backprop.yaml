@@ -1,0 +1,14 @@
+optimizer:
+  type: sgd
+  kwargs:
+    b2: 0.999
+  lr: 1.e-3
+  clip_gradnorm: 25.0
+
+training:
+  episode_length: 500
+  population_size: 128
+
+model:
+  sub_rnn:
+    layer_norm: True

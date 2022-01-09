@@ -1,0 +1,31 @@
+training:
+  population_size: 1024
+
+data:
+  preprocess:
+    rand_proj:
+      mpi_split:
+        - False
+        - True
+    resize:
+      mpi_repeat: 2
+      mpi_split:
+        - null
+        - [14, 14]
+        - [32, 32]
+  filter_classes:
+    mpi_repeat: 6
+    # Only of lengths [3, 4, 6, 7]
+    mpi_split:
+      - [6, 2, 3]
+      - [1, 5, 4, 9]
+      - [3, 2, 7, 9, 1, 4]
+      - [0, 4, 1, 2, 6, 7, 9]
+      - [2, 9, 8]
+      - [1, 0, 2, 6]
+      - [4, 3, 1, 0, 8, 9]
+      - [9, 6, 4, 3, 5, 2, 0]
+      - [9, 8, 1]
+      - [2, 3, 9, 4]
+      - [3, 4, 0, 5, 6, 9]
+      - [3, 6, 2, 9, 1, 0, 8]

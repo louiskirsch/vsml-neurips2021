@@ -1,0 +1,11 @@
+model:
+  vsml_rnn:
+    layer_specs:
+      - type: dense
+        out_size: 32
+      - type: dense
+    backward_pass: False
+    layerwise_rnns: False
+    feed_label: True
+  sub_rnn:
+    layer_norm: True

@@ -1,0 +1,19 @@
+grid:
+  - - config:
+        model:
+          sgd:
+            num_layers: 1
+    - config:
+        model:
+          sgd:
+            num_layers: 2
+  - - config:
+        model:
+          sgd:
+            optimizer: 'sgd'
+            lr: 0.01
+    - config:
+        model:
+          sgd:
+            optimizer: 'adam'
+            lr: 0.001

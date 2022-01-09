@@ -1,0 +1,4 @@
+model:
+  vsml_rnn:
+    backward_pass: True
+    separate_backward_rnn: False

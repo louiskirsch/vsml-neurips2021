@@ -1,0 +1,22 @@
+model:
+  type: SGD
+  sgd:
+    num_layers: 1
+    hidden_size: 160
+    tanh_bound: 100
+    optimizer: 'adam'
+    lr: 0.001
+    use_conv: True
+
+call: evaluate
+
+evaluation:
+  episode_length: 6
+  count: 100
+  batch_size: 1
+  datasets:
+    - omniglot_fewshot
+
+checkpoint:
+  restore:
+    run_path: null

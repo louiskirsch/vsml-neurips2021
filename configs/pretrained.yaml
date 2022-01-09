@@ -1,0 +1,4 @@
+checkpoint:
+  restore:
+    # TODO insert wandb_path here
+    run_path: 'entity/project/id'

@@ -1,0 +1,5 @@
+[default]
+entity = my_entity
+project = vsml
+base_url = https://api.wandb.ai
+
